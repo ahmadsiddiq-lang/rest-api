@@ -41,11 +41,11 @@ $ node 'filename.js'
   </a>
 </p>
 
-## Guide
+# Guide
 https://expressjs.com/en/guide/routing.html
 
 # Routing
-Routing refers to how an application’s endpoints (URIs) respond to client requests. For an introduction to routing, see Basic routing https://expressjs.com/en/starter/basic-routing.html.
+Routing refers to how an application’s endpoints (URIs) respond to client requests. For an introduction to routing, [see Basic routing](https://expressjs.com/en/starter/basic-routing.html).
 
 
 # Install Express
@@ -98,19 +98,25 @@ $ npm install jsonwebtoken
 $ npm install bcrypt-nodejs
 ```
 
-## Fiture in this program
+# Fiture in this program
 
 <!-- * [CRUD Product](#crud_product)
 * [CRUD Category](#crud_category)
 * [File Upload](#file_upload) -->
 
-# CRUD Product
-# CRUD Category
-# File Upload
-# Add/Reduce Product Order
-# Search Product by name
-# Sort product by name, category, date updated
-# Pagination
-# Cannot reduce Order below 0 (-1, -5, etc)
-# Allowed CORS
-# Login/Register with JWT
+## CRUD Product
+## CRUD Category
+## File Upload
+## Add/Reduce Product Order
+## Search Product by name
+## Sort product by name, category, date updated
+## Pagination
+## Cannot reduce Order below 0 (-1, -5, etc)
+## Allowed CORS
+## Login/Register with JWT
+
+
+
+
+### createby:
+[ahmadsiddiq](https://www.instagram.com/ahmad.sq/)
