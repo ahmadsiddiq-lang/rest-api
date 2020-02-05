@@ -36,7 +36,7 @@ $ node 'filename.js'
     <img
       alt="expressjs.com"
       src="https://github.com/ahmadsiddiq-lang/rest-api/blob/master/upload/express.PNG"
-      width="400"
+      width="450"
     />
   </a>
 </p>
