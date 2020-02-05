@@ -119,4 +119,4 @@ $ npm install bcrypt-nodejs
 
 
 ### create by:
-[ahmadsiddiq](https://www.instagram.com/ahmad.sq/)
+[ahmad siddiq](https://www.instagram.com/ahmad.sq/)
