@@ -73,12 +73,44 @@ REST is acronym for REpresentational State Transfer. It is architectural style f
 Like any other architectural style, REST also does have it’s own 6 guiding constraints which must be satisfied if an interface needs to be referred as RESTful. These principles are listed below. https://restfulapi.net/
 
 
-# Table of Contens
 
-* [CRUD Product](#crud_product)
+## Install the module to run this program
+
+```console
+$ npm install dotenv
+```
+```console
+$ npm install -g nodemon
+```
+```console
+$ npm install body-parser
+```
+```console
+$ npm install --save mysql
+```
+```console
+$ npm install --save multer
+```
+```console
+$ npm install jsonwebtoken
+```
+```console
+$ npm install bcrypt-nodejs
+```
+
+## Fiture in this program
+
+<!-- * [CRUD Product](#crud_product)
 * [CRUD Category](#crud_category)
-* [File Upload](#file_upload)
+* [File Upload](#file_upload) -->
 
-## CRUD Product
-## CRUD Category
-## File Upload
+# CRUD Product
+# CRUD Category
+# File Upload
+# Add/Reduce Product Order
+# Search Product by name
+# Sort product by name, category, date updated
+# Pagination
+# Cannot reduce Order below 0 (-1, -5, etc)
+# Allowed CORS
+# Login/Register with JWT
