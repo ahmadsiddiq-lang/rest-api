@@ -54,3 +54,31 @@ Routing refers to how an application’s endpoints (URIs) respond to client requ
 $ npm install express
 ```
 
+## RESTful API
+
+<p align="center">
+  <a href="https://restfulapi.net/">
+    <img
+      alt="restfulapi.net"
+      src="https://github.com/ahmadsiddiq-lang/rest-api/blob/master/upload/restful_api.jpg"
+      width="400"
+    />
+  </a>
+</p>
+
+# What Is REST
+
+REST is acronym for REpresentational State Transfer. It is architectural style for distributed hypermedia systems and was first presented by Roy Fielding in 2000 in his famous dissertation.
+
+Like any other architectural style, REST also does have it’s own 6 guiding constraints which must be satisfied if an interface needs to be referred as RESTful. These principles are listed below. https://restfulapi.net/
+
+
+# Table of Contens
+
+* [CRUD Product](#crud_product)
+* [CRUD Category](#crud_category)
+* [File Upload](#file_upload)
+
+## CRUD Product
+## CRUD Category
+## File Upload
