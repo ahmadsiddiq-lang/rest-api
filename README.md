@@ -72,7 +72,7 @@ Like any other architectural style, REST also does have it’s own 6 guiding con
 
 
 
-## Install the module to run this program
+## Install modul
 
 ```console
 $ npm install dotenv
