@@ -103,15 +103,30 @@ $ npm install bcrypt-nodejs
 * [File Upload](#file_upload) -->
 
 ## CRUD Product
+`localhost:8080/api/v1/product`
 ## CRUD Category
+`localhost:8080/api/v1/category`
 ## File Upload
+`localhost:8080/api/v1/product/insert`
 ## Add/Reduce Product Order
+`localhost:8080/api/v1/product/cart/2`
+`localhost:8080/api/v1/product/order/2`
 ## Search Product by name
+`localhost:8080/api/v1/product/search/leno`
 ## Sort product by name, category, date updated
+`localhost:8080/api/v1/product/sort/name`
 ## Pagination
+`localhost:8080/api/v1/product/pagination/2`
 ## Cannot reduce Order below 0 (-1, -5, etc)
+`localhost:8080/api/v1/product/cart/2`
 ## Allowed CORS
+```nodejs
+const cors = require('cors');
+app.use(cors());
+```
 ## Login/Register with JWT
+`localhost:8080/api/v1/product/login`
+`localhost:8080/api/v1/product/register`
 
 
 
