@@ -18,17 +18,15 @@ The Node.js project uses an [open governance model](./GOVERNANCE.md). The
 ## Download
 Binaries, installers, and source tarballs are available at https://nodejs.org/en/download/.
 
-# Releases
+## Releases
 https://nodejs.org/download/release/
 
-# Testing
+### Testing
 
 ```console
 $ node 'filename.js'
 ```
-```console
 
-```
 ## Express JS
 
 <p align="center">
@@ -41,16 +39,16 @@ $ node 'filename.js'
   </a>
 </p>
 
-# Guide
+## Guide
 https://expressjs.com/en/guide/routing.html
 
-# Routing
+## Routing
 Routing refers to how an application’s endpoints (URIs) respond to client requests. For an introduction to routing, [see Basic routing](https://expressjs.com/en/starter/basic-routing.html).
 
 
-# Install Express
+#### Install Express
 
-```console
+```nodejs
 $ npm install express
 ```
 
@@ -66,57 +64,94 @@ $ npm install express
   </a>
 </p>
 
-# What Is REST
+### What Is REST
 
 REST is acronym for REpresentational State Transfer. It is architectural style for distributed hypermedia systems and was first presented by Roy Fielding in 2000 in his famous dissertation.
 
 Like any other architectural style, REST also does have it’s own 6 guiding constraints which must be satisfied if an interface needs to be referred as RESTful. These principles are listed below. https://restfulapi.net/
 
-
+#
 
 ## Install the module to run this program
 
-```console
+```nodejs
 $ npm install dotenv
 ```
-```console
+```nodejs
 $ npm install -g nodemon
 ```
-```console
+```nodejs
 $ npm install body-parser
 ```
-```console
+```nodejs
 $ npm install --save mysql
 ```
-```console
+```nodejs
 $ npm install --save multer
 ```
-```console
+```nodejs
 $ npm install jsonwebtoken
 ```
-```console
+```nodejs
 $ npm install bcrypt-nodejs
 ```
+#
+### Require module
 
-# Fiture in this program
-
-<!-- * [CRUD Product](#crud_product)
-* [CRUD Category](#crud_category)
-* [File Upload](#file_upload) -->
-
-## CRUD Product
-## CRUD Category
-## File Upload
-## Add/Reduce Product Order
-## Search Product by name
-## Sort product by name, category, date updated
-## Pagination
-## Cannot reduce Order below 0 (-1, -5, etc)
-## Allowed CORS
-## Login/Register with JWT
+```nodejs
+const express = require('express');
+const app = express();
+```
+#
+## Fiture in this program
 
 
+#### CRUD Product
+#### CRUD Category
+#### File Upload
+#### Add/Reduce Product Order
+#### Search Product by name
+#### Sort product by name, category, date updated
+#### Pagination
+#### Cannot reduce Order below 0 (-1, -5, etc)
+#### Allowed CORS
+#### Login/Register with JWT(jsonwebtoken)
+
+#
+
+### SERVER :
+```nodejs
+
+require('dotenv').config();
+
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+var cors = require('cors');
+const port = process.env.SERVER_PORT;
+
+app.use(cors());
+app.use('/upload', express.static('./upload'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 
-### createby:
-[ahmadsiddiq](https://www.instagram.com/ahmad.sq/)
+const router = require('./src/routers/index.js');
+
+app.use('/api/v1', router);
+app.listen(port, (req, res)=>{
+    console.log(`App Listen port ${port}`)
+})
+
+```
+
+### Test
+
+```nodejs
+localhost:8080/api/v1/product
+```
+
+
+
+#### createby:
+* [ahmadsiddiq](https://www.instagram.com/ahmad.sq/)
