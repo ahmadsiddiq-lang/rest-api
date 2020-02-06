@@ -106,9 +106,9 @@ module.exports = {
         });
     },
 
-    paginationProduct :(page, perpage)=>{
+    paginationProduct :(page, pages)=>{
         return new Promise((resolve, reject)=>{
-          connecting.query(`SELECT * FROM products LIMIT ${page+", "+perpage}`, (err, result)=>{
+          connecting.query(`SELECT * FROM products LIMIT ${page+", "+pages}`, (err, result)=>{
             if(!err){
               resolve(result);
             }else{
@@ -117,6 +117,14 @@ module.exports = {
           });
         });
       },
+
+    stockOrder:(qty,id)=>{
+        return new Promise((resolve,reject)=>{
+            connecting.query("SELECT (stock-?) AS total_stock FROM `products` WHERE id=?", [qty,id], (err, result)=>{
+                resolve(result)
+            })
+        })
+    },
     
     orderProduct: (input, id_user, stock,id_product)=>{
         return new Promise((resolve, reject)=>{
@@ -219,7 +227,7 @@ module.exports = {
 
     histoyOrder: ()=>{
         return new Promise((resolve, reject)=>{
-            connecting.query('SELECT COUNT(*) AS id FROM orders;', (err, result)=>{
+            connecting.query('SELECT COUNT(*) AS total_order FROM orders;', (err, result)=>{
                 if(!err){
                     resolve(result)
                 }else{
@@ -228,4 +236,16 @@ module.exports = {
             })
         })
     },
+
+    insHistoryOrder: (status)=>{
+        return new Promise((resolve, reject)=>{
+            connecting.query(`UPDATE history SET status = ? WHERE name_history = 'week_order'`, status, (err, result)=>{
+                if(!err){
+                    resolve(result)
+                }else{
+                    reject(err)
+                }
+            })
+        })
+    }
 }

@@ -132,6 +132,9 @@ module.exports = {
             
             productModel.groubCart(id_user)
             .then((result)=>{
+            if(result.length <=0){
+                res.json('Cart Empty... !')
+            }else{
             const globTotal = result[0].total;
             productModel.getDetail(id_product)
             .then((result)=>{
@@ -155,6 +158,7 @@ module.exports = {
                 .catch(err=> console.log(err))
             })
             .catch(err=> console.log(err))
+        }
         })
         .catch(err=> console.log(err))
         })
@@ -169,16 +173,20 @@ module.exports = {
         .then((result)=>{
             const id_product  = result[0].id;
             const data = {id_user,id_product, total}
-            let stock_product = result[0].stock;
-                if(stock_product <= 0 ){
-                    res.json('Stock Empty...!');
-                }else{
+
+            productModel.stockOrder(total,id_products)
+            .then((result)=>{
+            // console.log(result)
+            if(result[0].total_stock <= 0){
+                res.json('Stock produck Empty !')
+            }else{
                     productModel.cartProduct(data)
                     .then((result)=>{
                         res.json(result)
                     })
                     .catch(err=> console.log(err))
                 }
+            })
         })
         .catch(err=> console.log(err))
     },
@@ -237,10 +245,15 @@ module.exports = {
     historyOrder: (req, res)=>{
         productModel.histoyOrder()
         .then((result)=>{
-            res.json({
-                TotalOrder: result[0].id
-                })
-            console.log(result)
+            res.json('Wes Update')
+            // console.log(result)
+            // console.log(result[0].total_order)
+            let status = result[0].total_order;
+            productModel.insHistoryOrder(status)
+            .then((result)=>{
+                res.json(result)
+            })
         })
+        .catch(err=>console.log(err))
     }
 }
