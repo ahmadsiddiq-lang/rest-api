@@ -1,6 +1,6 @@
 require('dotenv').config();
 const connecting = require('../config/db');
-const fs = require('fs')
+const fs = require('fs');
 
 module.exports = {
     getProduct: ()=>{
@@ -126,7 +126,7 @@ module.exports = {
         })
     },
     
-    orderProduct: (input, id_user, stock,id_product)=>{
+    orderProduct: (input, id_user, qty,id_product)=>{
         return new Promise((resolve, reject)=>{
             connecting.query("INSERT INTO orders SET ?",input, (err, result)=>{
                 if(!err){
@@ -135,7 +135,7 @@ module.exports = {
                     reject(err)
                 }
             }),
-            connecting.query(`UPDATE products SET stock = ? WHERE id = ?`, [stock, id_product], (err, result)=>{
+            connecting.query(`UPDATE products SET stock = stock-? WHERE id=?;`, [qty, id_product], (err, result)=>{
                 if(!err){
                     resolve(result)
                 }else{
@@ -177,9 +177,45 @@ module.exports = {
         })
     },
 
+    detailProductCart: (id_product)=>{
+        return new Promise((resolve,reject)=>{
+            connecting.query(`SELECT * FROM cart WHERE id_product =?`, id_product, (err, result)=>{
+                if(!err){
+                    resolve(result)
+                }else{
+                    reject(err)
+                }
+            })
+        })
+    },
+
+    getCarts: (id_user)=>{
+        return new Promise((resolve,reject)=>{
+            connecting.query(`SELECT * FROM cart WHERE id_user = ${id_user}`, (err, result)=>{
+                if(!err){
+                    resolve(result)
+                }else{
+                    reject(err)
+                }
+            })
+        })
+    },
+
+    deleteCart: (id_user)=>{
+        return new Promise((resolve, reject)=>{
+            connecting.query(`DELETE FROM cart WHERE id_user = ?`, id_user, (err, result)=>{
+                if(!err){
+                    resolve(result)
+                }else{
+                    reject(err)
+                }
+            })
+        })
+    },
+
     detailUser: (id_user)=>{
         return new Promise((resolve, reject)=>{
-            connecting.query(`SELECT * FROM users WHERE id_user =?`, id_user, (err,result)=>{
+            connecting.query(`SELECT * FROM users WHERE id_user = ?`, id_user, (err,result)=>{
                 if(!err){
                     resolve(result)
                 }else{
@@ -191,7 +227,7 @@ module.exports = {
 
     groubCart: (id_user)=>{
         return new Promise((resolve, reject)=>{
-            connecting.query(`SELECT id_user, SUM(total)AS total FROM cart WHERE id_user= ? GROUP BY id_user`, id_user, (err,result)=>{
+            connecting.query(`SELECT id_user, SUM(price)AS price_total FROM cart WHERE id_user= ? GROUP BY id_user`, id_user, (err,result)=>{
                 if(!err){
                     resolve(result)
                 }else{
@@ -240,6 +276,18 @@ module.exports = {
     insHistoryOrder: (status)=>{
         return new Promise((resolve, reject)=>{
             connecting.query(`UPDATE history SET status = ? WHERE name_history = 'week_order'`, status, (err, result)=>{
+                if(!err){
+                    resolve(result)
+                }else{
+                    reject(err)
+                }
+            })
+        })
+    },
+
+    getCart: (id_user)=>{
+        return new Promise((resolve, reject)=>{
+            connecting.query('SELECT * FROM products INNER JOIN cart ON products.id=cart.id_product WHERE cart.id_user= ?', id_user, (err, result)=>{
                 if(!err){
                     resolve(result)
                 }else{

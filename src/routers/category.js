@@ -6,9 +6,10 @@ const categoryController = require('../controllers/category');
 
 Router
   .get('/',auth.verify, categoryController.getCategory)
-  .get('/detail/:id_category', categoryController.getDetail)
-  .post('/insert', categoryController.insertCategory)
-  .put('/update/:id_category', categoryController.updateCategory)
-  .delete('/delete/:id_category', categoryController.deleteCategory)
+  // .get('/', categoryController.getCategory)
+  .get('/detail/:id_category',auth.verify, categoryController.getDetail)
+  .post('/insert',auth.verify, categoryController.insertCategory)
+  .put('/update/:id_category',auth.verify, categoryController.updateCategory)
+  .delete('/delete/:id_category',auth.verify, categoryController.deleteCategory)
 
 module.exports = Router;

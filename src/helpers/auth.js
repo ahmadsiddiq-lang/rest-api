@@ -2,9 +2,9 @@ const jwt = require('jsonwebtoken');
 
 module.exports ={
     verify : (req,res, next)=>{
-        token = req.headers['x-access-token'];
-        console.log(token)
+        // console.log(token)
         try{
+            token = req.headers.token;
             const decoded = jwt.verify(token, process.env.PRIVATE_KEY);
             console.log(decoded)
             next();
